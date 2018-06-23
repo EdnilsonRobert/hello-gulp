@@ -1,0 +1,6 @@
+_TEMP
+.idea
+node_modules
+
+*.log
+*.sh

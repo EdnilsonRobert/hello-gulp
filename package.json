@@ -1,0 +1,9 @@
+{
+  "name": "hello-gulp",
+  "version": "1.0.0",
+  "description": "Desenvolvimento de mini projeto para teste de funcionalidades da ferramenta Gulp.",
+  "main": "index.js",
+  "repository": "https://github.com/EdnilsonRobert/hello-gulp.git",
+  "author": "Ednilson Robert <have.fun@css.cafe>",
+  "license": "MIT"
+}
