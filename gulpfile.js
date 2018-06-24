@@ -1,10 +1,38 @@
 const gulp = require('gulp'),
       browsersync = require('browser-sync'),
+      concat = require('gulp-concat'),
       htmlcomb = require('gulp-htmlcomb'),
-      htmlmin = require('gulp-htmlmin');
+      htmlmin = require('gulp-htmlmin'),
+      jshint = require('gulp-jshint'),
+      rename = require('gulp-rename'),
+      sourcemaps = require('gulp-sourcemaps'),
+      uglify = require('gulp-uglify');
 
-const PATH_SRC  = './src/';
-const PATH_DIST = './dist/';
+const PATH_SRC  = './src/',
+      PATH_SRC_JS = './src/resources/js/';
+
+const PATH_DIST = './dist/',
+      PATH_DIST_JS = './dist/resources/js/';
+
+// Validar JS
+gulp.task('lint-js', function() {
+    return gulp
+    .src(PATH_SRC_JS + '*.js')
+    .pipe(jshint())
+    .pipe(jshint.reporter('default', { verbose: true }));
+});
+
+// Concatenar, minificar e renomear JS
+gulp.task('pack-js', function() {
+    return gulp
+    .src(PATH_SRC_JS + '*.js')
+    .pipe(sourcemaps.init())
+    .pipe(concat('main.js'))
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(uglify())
+    .pipe(sourcemaps.write('./maps'))
+    .pipe(gulp.dest(PATH_DIST_JS));
+});
 
 // Formatar e minificar HTML
 gulp.task('pack-html', function() {
@@ -42,6 +70,7 @@ gulp.task('browser-sync', function() {
         port: 3000
     });
     gulp.watch(PATH_SRC + '*.html', ['pack-html']).on('change', browsersync.reload);
+    gulp.watch(PATH_SRC_JS + '*.js', ['lint-js', 'pack-js']).on('change', browsersync.reload);
 });
 
 // Tarefa principal
