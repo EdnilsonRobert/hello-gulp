@@ -1,18 +1,40 @@
 const gulp = require('gulp'),
+      autoprefixer = require('gulp-autoprefixer'),
       browsersync = require('browser-sync'),
       concat = require('gulp-concat'),
       htmlcomb = require('gulp-htmlcomb'),
       htmlmin = require('gulp-htmlmin'),
       jshint = require('gulp-jshint'),
       rename = require('gulp-rename'),
+      sass = require('gulp-sass'),
       sourcemaps = require('gulp-sourcemaps'),
       uglify = require('gulp-uglify');
 
-const PATH_SRC  = './src/',
-      PATH_SRC_JS = './src/resources/js/';
+const PATH_SRC     = './src/',
+      PATH_SRC_CSS = './src/resources/scss/',
+      PATH_SRC_JS  = './src/resources/js/';
 
-const PATH_DIST = './dist/',
-      PATH_DIST_JS = './dist/resources/js/';
+const PATH_DIST     = './dist/',
+      PATH_DIST_CSS = './dist/resources/css/',
+      PATH_DIST_JS  = './dist/resources/js/';
+
+// Compilar e minificar SCSS
+gulp.task('pack-css', function() {
+    return gulp
+    .src(PATH_SRC_CSS + 'main.scss')
+    .pipe(sourcemaps.init())
+    .pipe(autoprefixer({
+        add: true,
+        remove: true,
+        flexbox: true
+    }))
+    .pipe(sass({
+        outputStyle: 'compressed'
+    }).on('error', sass.logError))
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(sourcemaps.write('./maps'))
+    .pipe(gulp.dest(PATH_DIST_CSS));
+});
 
 // Validar JS
 gulp.task('lint-js', function() {
@@ -70,6 +92,7 @@ gulp.task('browser-sync', function() {
         port: 3000
     });
     gulp.watch(PATH_SRC + '*.html', ['pack-html']).on('change', browsersync.reload);
+    gulp.watch(PATH_SRC_CSS + '*.scss', ['pack-css']).on('change', browsersync.reload);
     gulp.watch(PATH_SRC_JS + '*.js', ['lint-js', 'pack-js']).on('change', browsersync.reload);
 });
 

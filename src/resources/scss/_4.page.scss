@@ -1,0 +1,12 @@
+h2 { margin-top: 4.8rem; }
+h3 { margin-top: 3.2rem; }
+
+h1 { border-bottom: 1px solid rgba($crimson, .5); }
+h2 { border-bottom: 1px solid rgba($crimson, .25); }
+h3 { border-bottom: 1px solid rgba($dark-gray, .25); }
+
+h1, h2, h3 {
+    color: $crimson;
+}
+
+ul { margin-top: 2.4rem; }
