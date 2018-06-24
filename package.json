@@ -8,6 +8,8 @@
   "license": "MIT",
   "devDependencies": {
     "browser-sync": "^2.24.4",
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "gulp-htmlcomb": "^0.2.0",
+    "gulp-htmlmin": "^4.0.0"
   }
 }
