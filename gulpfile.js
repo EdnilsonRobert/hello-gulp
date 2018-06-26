@@ -1,9 +1,11 @@
 const gulp = require('gulp'),
       autoprefixer = require('gulp-autoprefixer'),
       browsersync = require('browser-sync'),
+      changed = require('gulp-changed'),
       concat = require('gulp-concat'),
       htmlcomb = require('gulp-htmlcomb'),
       htmlmin = require('gulp-htmlmin'),
+      imagemin = require('gulp-imagemin'),
       jshint = require('gulp-jshint'),
       rename = require('gulp-rename'),
       sass = require('gulp-sass'),
@@ -12,10 +14,12 @@ const gulp = require('gulp'),
 
 const PATH_SRC     = './src/',
       PATH_SRC_CSS = './src/resources/scss/',
+      PATH_SRC_IMG = './src/resources/images/',
       PATH_SRC_JS  = './src/resources/js/';
 
 const PATH_DIST     = './dist/',
       PATH_DIST_CSS = './dist/resources/css/',
+      PATH_DIST_IMG = './dist/resources/images/',
       PATH_DIST_JS  = './dist/resources/js/';
 
 // Compilar e minificar SCSS
@@ -56,9 +60,31 @@ gulp.task('pack-js', function() {
     .pipe(gulp.dest(PATH_DIST_JS));
 });
 
+// Otimizar imagens
+gulp.task('pack-images', function() {
+    return gulp
+    .src(PATH_SRC_IMG + '*')
+    .pipe(changed(PATH_DIST_IMG))
+    .pipe(imagemin([
+        imagemin.gifsicle({ interlaced: true }),
+        imagemin.jpegtran({ progressive: true }),
+        imagemin.optipng({ optimizationLevel: 5 }), /* entre 0 e 7 */
+        imagemin.svgo({
+            plugins: [
+                { removeViewBox: true },
+                { cleanupIDs: false }
+            ]
+        })
+    ], { verbose: true }))
+    .pipe(gulp.dest(PATH_DIST_IMG));
+    // TODO: Aplicar formatos MozJPEG e WebP
+    // TODO: Recordar imagens
+});
+
 // Formatar e minificar HTML
 gulp.task('pack-html', function() {
-    return gulp.src(PATH_SRC + '*.html')
+    return gulp.
+    src(PATH_SRC + '*.html')
     .pipe(htmlcomb({
         requireDoubleQuotationMarks: true,
         replaceSingleQuotationMarks: true,
@@ -79,6 +105,14 @@ gulp.task('pack-html', function() {
         collapseWhitespace: true,
         collapseBooleanAttributes: true
     }))
+    .pipe(gulp.dest(PATH_DIST));
+});
+
+// Copiar arquivos de complemento do projeto
+var files = ['favicon.*', 'manifest.webmanifest'];
+gulp.task('close-pack', function() {
+    return gulp
+    .src(files)
     .pipe(gulp.dest(PATH_DIST));
 });
 

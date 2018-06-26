@@ -1,7 +1,6 @@
 _TEMP
 .idea
 node_modules
-dist
 
 *.log
 *.sh
