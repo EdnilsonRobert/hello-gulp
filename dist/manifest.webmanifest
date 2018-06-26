@@ -1,0 +1,16 @@
+{
+  "short_name": "hello-gulp",
+  "name": "Hello, Gulp!",
+  "description": "Desenvolvimento de mini projeto para teste de funcionalidades da ferramenta Gulp.",
+  "icons": [
+    {
+      "src":"./resources/images/icon.svg",
+      "sizes": "256x256",
+      "type": "image/svg+xml"
+    }
+  ],
+  "start_url": "./",
+  "background_color": "#f5f5f5",
+  "theme_color": "#272727",
+  "display": "standalone"
+}

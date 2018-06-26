@@ -83,7 +83,8 @@ gulp.task('pack-images', function() {
 
 // Formatar e minificar HTML
 gulp.task('pack-html', function() {
-    return gulp.src(PATH_SRC + '*.html')
+    return gulp.
+    src(PATH_SRC + '*.html')
     .pipe(htmlcomb({
         requireDoubleQuotationMarks: true,
         replaceSingleQuotationMarks: true,
@@ -104,6 +105,14 @@ gulp.task('pack-html', function() {
         collapseWhitespace: true,
         collapseBooleanAttributes: true
     }))
+    .pipe(gulp.dest(PATH_DIST));
+});
+
+// Copiar arquivos de complemento do projeto
+var files = ['favicon.*', 'manifest.webmanifest'];
+gulp.task('close-pack', function() {
+    return gulp
+    .src(files)
     .pipe(gulp.dest(PATH_DIST));
 });
 
