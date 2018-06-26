@@ -24,6 +24,15 @@ Validar, concatenar e minificar JS
 
 - Pacotes: `gulp-concat` `gulp-jshint` `gulp-uglify`
 
+### Imagens
+Otimizar imagens
+
+- Pacotes: `gulp-changed` `gulp-imagemin`
+
+> TODO: <br>
+- [ ] Aplicar formatos MozJPEG e WebP <br>
+- [ ] Recordar imagens
+
 ### Pacotes auxiliares
 Renomear e gerar sourcemaps
 
