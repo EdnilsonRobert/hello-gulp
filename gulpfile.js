@@ -5,6 +5,7 @@ const gulp = require('gulp'),
       concat = require('gulp-concat'),
       htmlcomb = require('gulp-htmlcomb'),
       htmlmin = require('gulp-htmlmin'),
+      ico = require('gulp-to-ico'),
       imagemin = require('gulp-imagemin'),
       jshint = require('gulp-jshint'),
       rename = require('gulp-rename'),
@@ -14,13 +15,28 @@ const gulp = require('gulp'),
 
 const PATH_SRC     = './src/',
       PATH_SRC_CSS = './src/resources/scss/',
+      PATH_SRC_ICO = './src/resources/icons/',
       PATH_SRC_IMG = './src/resources/images/',
       PATH_SRC_JS  = './src/resources/js/';
 
 const PATH_DIST     = './dist/',
       PATH_DIST_CSS = './dist/resources/css/',
+      PATH_DIST_ICO = './dist/resources/icons/',
       PATH_DIST_IMG = './dist/resources/images/',
       PATH_DIST_JS  = './dist/resources/js/';
+
+// Empacotar ícones
+gulp.task('pack-icons', function() {
+    return gulp
+    .src(PATH_SRC_ICO + '*.png')
+    .pipe(ico('favicon.ico', {
+        resize: true, sizes: [16,24,32,48,64,96,128,256]
+    }))
+    // .pipe(ico('favicon.ico'))
+    .pipe(gulp.dest(PATH_DIST_ICO));
+    // TODO: Gerar ícones em todos os tamanhos necessários para Desktop e Mobile
+    // TODO: Gerar ícones em todos os formatos necessários para os diversos SOs
+});
 
 // Compilar e minificar SCSS
 gulp.task('pack-css', function() {
