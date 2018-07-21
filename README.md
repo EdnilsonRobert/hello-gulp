@@ -4,10 +4,11 @@ Mini projeto para teste de funcionalidades da ferramenta Gulp
 
 ## Funções
 
-- ** Tarefa principal ** : `default`
+- **Tarefa principal** : `default`
     - Aciona a tarefa `browser-sync` com live reload
     - Assiste alterações de HTML, SCSS e JS através das tarefas `pack-html`, `pack-css` e `pack-js`
-- ** Tarefas manuais ** :
+- **Tarefas manuais** :
+    - `pack-icons`: gera um arquivo `favicon.ico`
     - `pack-images`: otimiza imagens que ainda não foram otimizadas
     - `close-pack`: copia arquivos complementares para o local adequado
 
@@ -44,6 +45,15 @@ Otimizar imagens
 > TODO: <br>
 - [ ] Aplicar formatos MozJPEG e WebP <br>
 - [ ] Recordar imagens
+
+### Ícones
+Gerar um favicon
+
+- Pacotes: `gulp-to-ico`
+
+> TODO: <br>
+- [ ] Gerar ícones em todos os tamanhos necessários para Desktop e Mobile
+- [ ] Gerar ícones em todos os formatos necessários para os diversos SOs
 
 ### Pacotes auxiliares
 Renomear e gerar sourcemaps
