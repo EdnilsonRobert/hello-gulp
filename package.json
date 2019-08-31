@@ -1,26 +1,19 @@
 {
   "name": "hello-gulp",
-  "version": "1.0.0",
-  "description": "Desenvolvimento de mini projeto para teste de funcionalidades da ferramenta Gulp.",
-  "main": "index.js",
-  "repository": "https://github.com/EdnilsonRobert/hello-gulp.git",
-  "author": "Ednilson Robert <have.fun@css.cafe>",
+  "version": "2.0.1",
+  "description": "Repositório para estudos sobre GulpJS",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EdnilsonRobert/hello-gulp.git"
+  },
+  "author": "EdnilsonRobert <frontend@ednilsonrobert.dev>",
   "license": "MIT",
-  "devDependencies": {
-    "browser-sync": "^2.24.4",
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^5.0.0",
-    "gulp-changed": "^3.2.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-htmlcomb": "^0.2.0",
-    "gulp-htmlmin": "^4.0.0",
-    "gulp-imagemin": "^4.1.0",
-    "gulp-jshint": "^2.1.0",
-    "gulp-rename": "^1.3.0",
-    "gulp-sass": "^4.0.1",
-    "gulp-sourcemaps": "^2.6.4",
-    "gulp-to-ico": "^1.0.0",
-    "gulp-uglify": "^3.0.0",
-    "jshint": "^2.9.5"
-  }
+  "bugs": {
+    "url": "https://github.com/EdnilsonRobert/hello-gulp/issues"
+  },
+  "homepage": "https://github.com/EdnilsonRobert/hello-gulp#readme"
 }
