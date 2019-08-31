@@ -4,7 +4,7 @@
   "description": "Repositório para estudos sobre GulpJS",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "gulp default"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/EdnilsonRobert/hello-gulp/issues"
   },
-  "homepage": "https://github.com/EdnilsonRobert/hello-gulp#readme"
+  "homepage": "https://github.com/EdnilsonRobert/hello-gulp#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2"
+  }
 }
