@@ -5,22 +5,28 @@
     @author: EdnilsonRobert <frontend@ednilsonrobert.dev>
 ============================================================================= */
 
-/** ============================================================================
-Variables
-============================================================================= */
-const browsersync = require('browser-sync'),
-      gulp = require('gulp');
+/** VARIABLES =============================================================== */
+const gulp = require('gulp'),
+      browsersync = require('browser-sync'),
+      notify = require('gulp-notify');
 
+let messages = require('./gulpconfig.js').messages;
+
+
+/** NOTIFY ================================================================== */
+let htmlUpdated = () => {
+  return gulp.src('./').pipe(notify(messages.html.update));
+}
+
+
+/** BROWSER SYNC ============================================================ */
 let pageReload = () => {
   return gulp
-    .src('./')
-    .pipe(browsersync.reload({ stream: true }));
+  .src('./')
+  .pipe(browsersync.reload({ stream: true }));
 }
 exports.pageReload = pageReload;
 
-/** ============================================================================
-Browser Sync
-============================================================================= */
 let dev = () => {
   browsersync.init({
     server: {
@@ -30,13 +36,13 @@ let dev = () => {
     port: 3000
   });
 
-  gulp.watch('./*.html', gulp.series(pageReload));
+  gulp.src('./').pipe(notify(messages.gulp.isRunning));
+  gulp.watch('./*.html', gulp.series(pageReload, htmlUpdated));
 }
 exports.dev = dev;
 
-/** ============================================================================
-Task default
-============================================================================= */
+
+/** TASK DEFAULT ============================================================ */
 gulp.task('default', gulp.series(dev), () => {
   console.log('>>> GulpJS works like a charm.');
 });
