@@ -1,65 +1,54 @@
-# Hello, Gulp!
+# Hello, GulpJS.
 
-Mini projeto para teste de funcionalidades da ferramenta Gulp
+> Projeto para estudos sobre GulpJS
 
-## Funções
+`<wip/> <!-- work in progress -->`
 
-- **Tarefa principal** : `default`
-    - Aciona a tarefa `browser-sync` com live reload
-    - Assiste alterações de HTML, SCSS e JS através das tarefas `pack-html`, `pack-css` e `pack-js`
-- **Tarefas manuais** :
-    - `pack-icons`: gera um arquivo `favicon.ico`
-    - `pack-images`: otimiza imagens que ainda não foram otimizadas
-    - `close-pack`: copia arquivos complementares para o local adequado
+## Repositório para estudos sobre GulpJS
 
-## Lista de pacotes utilizados
+  - [x] Atualização de versões de pacotes do projeto
 
-### Servidor
-Criar servidor local e sincronizar com browser.
 
-- Pacotes: `gulp` `browser-sync`
+### Tarefas (`tasks`) a ser realizadas
 
-### HTML
-Formatar e minificar HTML
+#### Servidor
 
-- Pacotes: `gulp-htmlcomb` `gulp-htmlmin`
+  - [x] Servidor local sincronizado com navegador utilizando **browser-sync**
+  - [ ] Atualizar navegador a cada alteração salva em arquivos HTML, CSS e JavaScript (_live reload_)
 
-### CSS
-Prefixar vendors (não testado), transpilar e minificar CSS
+#### Notificações
 
-- Pacotes: `gulp-autoprefixer` `gulp-sass`
+  - [x] Exibir notificações sobre status de tarefas utilizando **gulp-notify**
 
-> TODO: <br>
-- [ ] Testar autoprefixer
+#### HTML
 
-### JavaScript
-Validar, concatenar e minificar JS
+  - [ ] Formatar e minificar HTML
 
-- Pacotes: `gulp-concat` `gulp-jshint` `gulp-uglify`
+#### CSS
 
-### Imagens
-Otimizar imagens
+  - [ ] Transpilar e minificar CSS
+  - [ ] Adicionar sufixo de versão ao nome do arquivo `.css`
 
-- Pacotes: `gulp-changed` `gulp-imagemin`
+#### JavaScript
 
-> TODO: <br>
-- [ ] Aplicar formatos MozJPEG e WebP <br>
-- [ ] Recordar imagens
+  - [ ] Concatenar e minificar arquivos `.js`
+  - [ ] Validar (_lint_) arquivos `.js`
 
-### Ícones
-Gerar um favicon
+#### Imagens
 
-- Pacotes: `gulp-to-ico`
+  - [ ] Otimizar imagens
+  - [ ] Converter formatos de imagens
+  - [ ] Recortar imagens
 
-> TODO: <br>
-- [ ] Gerar ícones em todos os tamanhos necessários para Desktop e Mobile
-- [ ] Gerar ícones em todos os formatos necessários para os diversos SOs
+#### Ícones
 
-### Pacotes auxiliares
-Renomear e gerar sourcemaps
+  - [ ] Gerar arquivo `favicon.ico`
+  - [ ] Gerar ícones `.png` em tamanhos diferentes
 
-- Pacotes: `gulp-rename` `gulp-sourcemaps`
+### Tarefas de fechamento (_Build_)
+
+  - [ ] Empacotar todo o projeto em uma diretório `./dist`
 
 ---
 
-Sugestões? Envie email para <have.fun@css.cafe>.
+Sugestões? Envie email para <frontend@ednilsonrobert.dev>
