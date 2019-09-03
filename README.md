@@ -6,15 +6,12 @@
 
 ## Repositório para estudos sobre GulpJS
 
-  - [x] Atualização de versões de pacotes do projeto
-
-
 ### Tarefas (`tasks`) a ser realizadas
 
 #### Servidor
 
   - [x] Servidor local sincronizado com navegador utilizando **browser-sync**
-  - [ ] Atualizar navegador a cada alteração salva em arquivos HTML, CSS e JavaScript (_live reload_)
+  - [ ] Atualizar navegador a cada alteração salva em arquivos HTML, CSS ou JavaScript (_live reload_)
 
 #### Notificações
 
@@ -22,7 +19,8 @@
 
 #### HTML
 
-  - [ ] Formatar e minificar HTML
+  - [ ] Validar HTML (? = HTML Validator ou Linter)
+  - [x] Formatar e minificar HTML utilizando **gulp-htmlmin**
 
 #### CSS
 

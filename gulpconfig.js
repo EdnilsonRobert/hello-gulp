@@ -4,15 +4,26 @@ let insertIcon = (icon) => {
   return path.join(__dirname, `${app.paths.icons}/${icon}`);
 }
 
+let paths = {
+  root: './',
+  src: {
+    root: './src',
+    icons: './src/icons'
+  },
+  dev: {
+    root: './dev'
+  }
+}
+
 let app = {
   name: 'GulpJS',
   appID: 'GulpJS',
   paths: {
-    icons: './src/icons'
+    icons: paths.src.icons
   }
 }
 
-exports.messages = {
+let messages = {
   gulp: {
     isRunning: {
       title: app.name,
@@ -29,4 +40,10 @@ exports.messages = {
       appID: app.appID
     }
   }
+}
+
+module.exports = {
+  paths,
+  app,
+  messages
 }
