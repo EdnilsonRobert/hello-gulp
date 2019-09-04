@@ -5,13 +5,14 @@ let insertIcon = (icon) => {
 }
 
 let paths = {
-  root: './',
   src: {
     root: './src',
-    icons: './src/icons'
+    icons: './src/icons',
+    css: './src/scss'
   },
   dev: {
-    root: './dev'
+    root: './dev',
+    css: './dev/resources/css'
   }
 }
 
@@ -38,6 +39,21 @@ let messages = {
       message: 'O arquivo HTML foi atualizado.',
       icon: insertIcon('icon-success.png'),
       appID: app.appID
+    }
+  },
+  css: {
+    cssErrorMessage: 'Houve falha na transpilação dos arquivos.',
+    error: {
+      title: 'Ooops!',
+      icon: insertIcon('icon-error.png'),
+      appID: app.appID
+    },
+    success: {
+      title: 'WOW!',
+      message: 'Arquivos CSS transpilados com sucesso.',
+      icon: insertIcon('icon-success.png'),
+      appID: app.appID,
+      onLast: true
     }
   }
 }

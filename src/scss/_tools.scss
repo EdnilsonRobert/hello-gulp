@@ -1,0 +1,14 @@
+/** ============================================================================
+FUNCTIONS, MIXINS and PLACEHOLDERS
+============================================================================= */
+
+// FUNCTIONS
+@function image($image) {
+  @return url('#{$PATH_IMG}/#{$image}');
+}
+
+// MIXINS
+@mixin size($w: 100%, $h: auto) {
+  width: $w;
+  height: $h;
+}

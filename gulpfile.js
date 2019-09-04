@@ -9,7 +9,10 @@
 const gulp = require('gulp'),
       browsersync = require('browser-sync'),
       htmlmin = require('gulp-htmlmin'),
-      notify = require('gulp-notify');
+      notify = require('gulp-notify'),
+      rename = require('gulp-rename'),
+      sass = require('gulp-sass'),
+      sourcemaps = require('gulp-sourcemaps');
 
 let messages = require('./gulpconfig.js').messages;
 let paths = require('./gulpconfig.js').paths;
@@ -19,10 +22,16 @@ let paths = require('./gulpconfig.js').paths;
 let htmlUpdated = () => {
   return notify(messages.html.update);
 }
+let cssFailed = () => {
+  return notify(messages.css.error).write(messages.css.cssErrorMessage);
+}
+let cssUpdated = () => {
+  return notify(messages.css.success);
+}
 
 
 /** HTML ==================================================================== */
-let htmlMinify = () => {
+let htmlify = () => {
   return gulp
     .src(`${paths.src.root}/**/*.html`)
     .pipe(htmlmin({
@@ -39,7 +48,24 @@ let htmlMinify = () => {
     .pipe(gulp.dest(paths.dev.root))
     .pipe(htmlUpdated());
 }
-exports.htmlMinify = htmlMinify;
+exports.htmlify = htmlify;
+
+
+/** CSS ===================================================================== */
+let sassify = () => {
+  return gulp
+    .src(`${paths.src.css}/**/*.scss`)
+    .pipe(sourcemaps.init())
+    .pipe(sass({ outputStyle: 'compressed' })
+      .on('error', sass.logError)
+      .on('error', (err) => { cssFailed() }))
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(sourcemaps.write('./maps'))
+    .pipe(gulp.dest(paths.dev.css))
+    .pipe(cssUpdated())
+    .pipe(browsersync.reload({ stream: true }));
+}
+exports.sassify = sassify;
 
 
 /** BROWSER SYNC ============================================================ */
@@ -60,7 +86,8 @@ let dev = () => {
   });
 
   gulp.src(paths.src.root).pipe(notify(messages.gulp.isRunning));
-  gulp.watch(`${paths.src.root}/*.html`, gulp.series(htmlMinify, pageReload));
+  gulp.watch(`${paths.src.root}/*.html`, gulp.series(htmlify, pageReload));
+  gulp.watch(`${paths.src.css}/**/*.scss`, gulp.series(sassify));
 }
 exports.dev = dev;
 
