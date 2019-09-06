@@ -24,8 +24,9 @@
 
 #### CSS
 
-  - [ ] Transpilar e minificar CSS
+  - [x] Transpilar e minificar CSS utilizando **gulp-sass**
   - [ ] Adicionar sufixo de versão ao nome do arquivo `.css`
+  - [x] Gerar documentação de CSS utilizando **SassDoc**
 
 #### JavaScript
 
