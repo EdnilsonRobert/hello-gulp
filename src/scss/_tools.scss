@@ -2,12 +2,26 @@
 FUNCTIONS, MIXINS and PLACEHOLDERS
 ============================================================================= */
 
-// FUNCTIONS
+/// A função `image()` define uma imagem como background de um elemento
+/// @group Functions
+/// @parameter { string } image - Nome da imagem
+/// @example background-image: image('icon-sucess.svg');
+/// @return { string } url('../images/icon-sucess.svg');
+/// @author EdnilsonRobert
+
 @function image($image) {
   @return url('#{$PATH_IMG}/#{$image}');
 }
 
-// MIXINS
+
+/// O mixin `size()` define `width` e `height` de um elemento
+/// @group Mixins
+/// @parameter { width } w [100%] - Largura do elemento
+/// @parameter { height } h [auto] - Altura do elemento
+/// @example .box1 { @include size(); } // { width: 100%; height: auto; /* default */ }
+/// @example .box2 { @include size(4.8rem, 4.8rem); } // { width: 4.8rem; height: 4.8rem; }
+/// @author EdnilsonRobert
+
 @mixin size($w: 100%, $h: auto) {
   width: $w;
   height: $h;

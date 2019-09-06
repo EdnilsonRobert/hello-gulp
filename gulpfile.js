@@ -12,6 +12,7 @@ const gulp = require('gulp'),
       notify = require('gulp-notify'),
       rename = require('gulp-rename'),
       sass = require('gulp-sass'),
+      sassdoc = require('sassdoc'),
       sourcemaps = require('gulp-sourcemaps');
 
 let messages = require('./gulpconfig.js').messages;
@@ -52,20 +53,51 @@ exports.htmlify = htmlify;
 
 
 /** CSS ===================================================================== */
+let yyyymmdd = () => {
+  let twoDigit = (n) => n < 10 ? `0${n}` : n;
+  let now = new Date();
+
+  return '' + now.getFullYear() + twoDigit(now.getMonth() + 1) + twoDigit(now.getDate());
+}
+
 let sassify = () => {
   return gulp
     .src(`${paths.src.css}/**/*.scss`)
+    .pipe(sassdocfy())
     .pipe(sourcemaps.init())
     .pipe(sass({ outputStyle: 'compressed' })
       .on('error', sass.logError)
       .on('error', (err) => { cssFailed() }))
     .pipe(rename({ suffix: '.min' }))
+    // .pipe(rename({ suffix: '.min', extname: '.css?v=' + yyyymmdd() }))
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(paths.dev.css))
     .pipe(cssUpdated())
     .pipe(browsersync.reload({ stream: true }));
 }
 exports.sassify = sassify;
+
+let sassdocfy = () => {
+  let options = {
+    dest: `${paths.dev.root}/_docs`,
+    verbose: true,
+    display: {
+      access: ['public', 'private'],
+      alias: true,
+      watermark: true
+    },
+    groups: {
+      'undefined': 'Ungrouped',
+      functions: 'Funções',
+      mixins: 'Mixins'
+    }
+  }
+
+  return gulp
+    .src(`${paths.src.css}/**/*.scss`)
+    .pipe(sassdoc(options));
+}
+exports.sassdocfy = sassdocfy;
 
 
 /** BROWSER SYNC ============================================================ */

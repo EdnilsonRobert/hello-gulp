@@ -42,7 +42,7 @@ let messages = {
     }
   },
   css: {
-    cssErrorMessage: 'Houve falha na transpilação dos arquivos.',
+    cssErrorMessage: 'Houve falha na transpilação dos arquivos.\nConsulte o Terminal para checar o log de erros.',
     error: {
       title: 'Ooops!',
       icon: insertIcon('icon-error.png'),
@@ -50,7 +50,7 @@ let messages = {
     },
     success: {
       title: 'WOW!',
-      message: 'Arquivos CSS transpilados com sucesso.',
+      message: 'Arquivos CSS transpilados com sucesso!',
       icon: insertIcon('icon-success.png'),
       appID: app.appID,
       onLast: true
