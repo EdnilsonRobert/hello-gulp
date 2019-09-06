@@ -1,0 +1,24 @@
+/** ============================================================================
+    Project: GulpJS
+    ----------------------------------------------------------------------------
+    @description: Projeto para estudos de GulpJS
+    @author: EdnilsonRobert <frontend@ednilsonrobert.dev>
+============================================================================= */
+
+// Variables
+@import './vars';
+
+// Functions, Mixins and Placeholders
+@import './tools';
+
+// Reset
+@import './generic';
+
+// Normalize
+@import './base';
+
+// Objects
+@import './objects';
+
+// Utilities
+@import './utils';
