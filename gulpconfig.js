@@ -5,14 +5,19 @@ let insertIcon = (icon) => {
 }
 
 let paths = {
-  src: {
-    root: './src',
-    icons: './src/icons',
-    css: './src/scss'
+  root: {
+    src: './src',
+    dest: './main/webapp'
   },
-  dev: {
-    root: './dev',
-    css: './dev/resources/css'
+  css: {
+    src: './src/scss',
+    dest: './main/webapp/resources/css'
+  },
+  docs: {
+    dest: './main/webapp/docs'
+  },
+  icons: {
+    src: './src/icons'
   }
 }
 
@@ -20,7 +25,7 @@ let app = {
   name: 'GulpJS',
   appID: 'GulpJS',
   paths: {
-    icons: paths.src.icons
+    icons: paths.icons.src
   }
 }
 
