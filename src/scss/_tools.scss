@@ -26,3 +26,18 @@ FUNCTIONS, MIXINS and PLACEHOLDERS
   width: $w;
   height: $h;
 }
+
+
+/// O mixin `bottom-centered()` define uma posição no eixo Y para posicionamento de um elemento
+/// @group Mixins
+/// @parameter { distance } y [0] - Distância no eixo Y
+/// @example .box1 { @include bottom-centered(); } // { position: absolute; bottom: 0; ... }
+/// @example .box2 { @include bottom-centered(2.4rem); } // { position: absolute; bottom: 2.4rem; ... }
+/// @author EdnilsonRobert
+
+@mixin bottom-centered($y: 0) {
+  position: absolute;
+  left: 50%;
+  bottom: $y;
+  transform: translateX(-50%);
+}

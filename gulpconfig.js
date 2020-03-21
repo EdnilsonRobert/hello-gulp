@@ -18,6 +18,10 @@ let paths = {
   },
   icons: {
     src: './src/icons'
+  },
+  js: {
+    src: './src/js',
+    dest: './main/webapp/resources/js'
   }
 }
 
@@ -59,6 +63,14 @@ let messages = {
       icon: insertIcon('icon-success.png'),
       appID: app.appID,
       onLast: true
+    }
+  },
+  js: {
+    update: {
+      title: 'HTML',
+      message: 'Um arquivo JS foi gerado com sucesso.',
+      icon: insertIcon('icon-success.png'),
+      appID: app.appID
     }
   }
 }

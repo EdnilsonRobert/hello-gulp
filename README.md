@@ -11,7 +11,7 @@
 #### Servidor
 
   - [x] Servidor local sincronizado com navegador utilizando **browser-sync**
-  - [ ] Atualizar navegador a cada alteração salva em arquivos HTML, CSS ou JavaScript (_live reload_)
+  - [x] Atualizar navegador a cada alteração salva em arquivos HTML, CSS ou JavaScript (_live reload_)
 
 #### Notificações
 
@@ -30,8 +30,9 @@
 
 #### JavaScript
 
-  - [ ] Concatenar e minificar arquivos `.js`
-  - [ ] Validar (_lint_) arquivos `.js`
+  - [x] Concatenar arquivos JS utilizando **gulp-concat**
+  - [x] Minificar arquivos JS utilizando **gulp-terser**
+  - [ ] Validar arquivos JS utilizando **ESLint**
 
 #### Imagens
 
