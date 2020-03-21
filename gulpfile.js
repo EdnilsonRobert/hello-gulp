@@ -8,12 +8,14 @@
 /** VARIABLES =============================================================== */
 const browsersync = require('browser-sync'),
       gulp = require('gulp'),
+      concat = require('gulp-concat'),
       htmlmin = require('gulp-htmlmin'),
       notify = require('gulp-notify'),
       rename = require('gulp-rename'),
       sass = require('gulp-sass'),
       sassdoc = require('sassdoc'),
-      sourcemaps = require('gulp-sourcemaps');
+      sourcemaps = require('gulp-sourcemaps'),
+      terser = require('gulp-terser');
 
 let messages = require('./gulpconfig.js').messages;
 let paths = require('./gulpconfig.js').paths;
@@ -28,6 +30,9 @@ let cssFailed = () => {
 }
 let cssUpdated = () => {
   return notify(messages.css.success);
+}
+let jsUpdated = () => {
+  return notify(messages.js.update);
 }
 
 
@@ -100,6 +105,31 @@ let sassdocfy = () => {
 exports.sassdocfy = sassdocfy;
 
 
+/** JAVASCRIPT ============================================================== */
+let jsify = () => {
+  console.log(`Environment: ${process.env.NODE_ENV}.`);
+  return gulp
+    .src(`${paths.js.src}/**/*.js`)
+    .pipe(sourcemaps.init())
+    .pipe(concat('bundle.js'))
+    .pipe(terser({
+      parse: { ecma: 2017 },
+      compress: { ecma: 5 },
+      output: { ecma: 5 },
+      keep_classnames: false,
+      keep_fnames: false,
+      toplevel: false,
+      warnings: false
+    }))
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(sourcemaps.write('./maps'))
+    .pipe(gulp.dest(paths.js.dest))
+    .pipe(jsUpdated())
+    .pipe(browsersync.reload({ stream: true }));
+}
+exports.jsify = jsify;
+
+
 /** BROWSER SYNC ============================================================ */
 let pageReload = () => {
   return gulp
@@ -120,6 +150,7 @@ let dev = () => {
   gulp.src(paths.root.src).pipe(notify(messages.gulp.isRunning));
   gulp.watch(`${paths.root.src}/*.html`, gulp.series(htmlify, pageReload));
   gulp.watch(`${paths.css.src}/**/*.scss`, gulp.series(sassify));
+  gulp.watch(`${paths.js.src}/**/*.js`, gulp.series(jsify));
 }
 exports.dev = dev;
 
