@@ -32,7 +32,9 @@
 
   - [x] Concatenar arquivos JS utilizando **gulp-concat**
   - [x] Minificar arquivos JS utilizando **gulp-terser**
-  - [ ] Validar arquivos JS utilizando **ESLint**
+  - [x] Validar arquivos JS utilizando **ESLint**
+  - [ ] Configurar `ESLint` com **Prettier**
+  - [ ] Gerar documentação de JS
 
 #### Imagens
 
