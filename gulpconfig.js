@@ -43,7 +43,7 @@ let messages = {
     }
   },
   html: {
-    update: {
+    success: {
       title: 'HTML',
       message: 'O arquivo HTML foi atualizado.',
       icon: insertIcon('icon-success.png'),
@@ -66,8 +66,14 @@ let messages = {
     }
   },
   js: {
-    update: {
-      title: 'HTML',
+    jsErrorMessage: 'Há um ou mais arquivos JS com erro. Verifique o terminal.',
+    error: {
+      title: 'Javascript',
+      icon: insertIcon('icon-error.png'),
+      appID: app.appID
+    },
+    success: {
+      title: 'Javascript',
       message: 'Um arquivo JS foi gerado com sucesso.',
       icon: insertIcon('icon-success.png'),
       appID: app.appID
