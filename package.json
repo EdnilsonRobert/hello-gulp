@@ -4,7 +4,8 @@
   "description": "Repositório para estudos sobre GulpJS",
   "main": "gulpfile.js",
   "scripts": {
-    "dev": "export NODE_ENV=dev && gulp default"
+    "dev": "export NODE_ENV=dev && gulp default",
+    "lint": "export NODE_ENV=dev && gulp lintifyGulp"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
     "browser-sync": "^2.26.7",
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
+    "gulp-eslint": "^6.0.0",
     "gulp-htmlmin": "^5.0.1",
     "gulp-notify": "^3.2.0",
     "gulp-rename": "^2.0.0",
